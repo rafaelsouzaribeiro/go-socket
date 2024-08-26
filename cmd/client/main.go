@@ -1,12 +1,11 @@
 package main
 
 import (
+	"bytes"
+	"encoding/gob"
+
 	Connection "github.com/rafaelsouzaribeiro/go-socket/internal/infra/web"
 )
-
-type Send struct {
-	Message string
-}
 
 func main() {
 	connect := Connection.New("localhost", "8585")
@@ -18,11 +17,17 @@ func main() {
 
 	defer conn.Close()
 
-	send := Send{Message: "Hello world 1"}
+	send := Connection.Send{Message: "Hello world 1"}
 
-	messageBytes := []byte(send.Message)
+	var buffer bytes.Buffer
+	encoder := gob.NewEncoder(&buffer)
+	err = encoder.Encode(send)
 
-	_, err = conn.Write(messageBytes)
+	if err != nil {
+		panic(err)
+	}
+
+	_, err = conn.Write(buffer.Bytes())
 	if err != nil {
 		panic(err)
 	}

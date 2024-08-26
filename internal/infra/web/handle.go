@@ -1,23 +1,22 @@
 package web
 
 import (
+	"encoding/gob"
 	"fmt"
 	"net"
-	"time"
 )
 
 func (h *Iconnection) HandleConnection(conn *net.TCPConn) {
 	defer conn.Close()
 
-	conn.SetDeadline(time.Now().Add(10 * time.Second))
-	item := make([]byte, 1024)
-	size, err := conn.Read(item)
+	var send Send
+	decoder := gob.NewDecoder(conn)
+	err := decoder.Decode(&send)
 	if err != nil {
-		fmt.Println("Error reading data:", err)
+		fmt.Println("Error decoding message:", err)
 		return
 	}
 
-	message := string(item[:size])
-	fmt.Println("Received:", message)
+	fmt.Println("Message received:", send.Message)
 
 }
