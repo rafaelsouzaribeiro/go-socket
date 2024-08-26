@@ -9,14 +9,14 @@ import (
 func (h *Iconnection) HandleConnection(conn *net.TCPConn) {
 	defer conn.Close()
 
-	var send Send
+	var person Person
 	decoder := gob.NewDecoder(conn)
-	err := decoder.Decode(&send)
+	err := decoder.Decode(&person)
 	if err != nil {
 		fmt.Println("Error decoding message:", err)
 		return
 	}
 
-	fmt.Println("Message received:", send.Message)
+	fmt.Printf("Message received. Name:%s,Age:%d \n", person.Name, person.Age)
 
 }

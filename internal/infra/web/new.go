@@ -5,8 +5,9 @@ type Iconnection struct {
 	Port string
 }
 
-type Send struct {
-	Message string
+type Person struct {
+	Name string
+	Age  int
 }
 
 func New(host, port string) *Iconnection {

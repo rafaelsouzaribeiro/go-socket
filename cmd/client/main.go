@@ -17,7 +17,7 @@ func main() {
 
 	defer conn.Close()
 
-	send := Connection.Send{Message: "Hello world 1"}
+	send := Connection.Person{Name: "Rafael", Age: 38}
 
 	var buffer bytes.Buffer
 	encoder := gob.NewEncoder(&buffer)
