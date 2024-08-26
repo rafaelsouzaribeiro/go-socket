@@ -18,7 +18,7 @@ func main() {
 
 	defer conn.Close()
 
-	send := Send{Message: "Hello from client 2"}
+	send := Send{Message: "Hello world 1"}
 
 	messageBytes := []byte(send.Message)
 
