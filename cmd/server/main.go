@@ -7,10 +7,6 @@ import (
 	Connection "github.com/rafaelsouzaribeiro/go-socket/internal/infra/web"
 )
 
-type Receive struct {
-	Message string
-}
-
 func main() {
 	connect := Connection.New("localhost", "8585")
 	listener, err := connect.ConnectionServer()
