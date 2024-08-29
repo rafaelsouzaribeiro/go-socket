@@ -5,6 +5,7 @@ import (
 	"log"
 
 	Connection "github.com/rafaelsouzaribeiro/go-socket/internal/infra/web"
+	"github.com/rafaelsouzaribeiro/go-socket/pkg/factory"
 )
 
 func main() {
@@ -18,6 +19,7 @@ func main() {
 	defer listener.Close()
 
 	fmt.Printf("Server started at %s:%s \n", connect.Host, connect.Port)
+	factories := factory.NewServer(false, true)
 
 	for {
 		conn, err := listener.AcceptTCP()
@@ -25,6 +27,7 @@ func main() {
 			log.Fatal(err)
 		}
 
-		go connect.HandleConnection(conn)
+		go factories.GetServer(connect, conn)
+
 	}
 }

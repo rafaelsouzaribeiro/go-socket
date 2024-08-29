@@ -1,10 +1,8 @@
 package main
 
 import (
-	"bytes"
-	"encoding/gob"
-
 	Connection "github.com/rafaelsouzaribeiro/go-socket/internal/infra/web"
+	"github.com/rafaelsouzaribeiro/go-socket/pkg/factory"
 )
 
 func main() {
@@ -16,18 +14,19 @@ func main() {
 	}
 
 	defer conn.Close()
-
-	send := Connection.Person{Name: "Rafael", Age: 38}
-
-	var buffer bytes.Buffer
-	encoder := gob.NewEncoder(&buffer)
-	err = encoder.Encode(send)
+	people := []Connection.Person{
+		{Name: "Rafael", Age: 38},
+		{Name: "Maria", Age: 30},
+		{Name: "João", Age: 25},
+	}
+	factories := factory.NewClient(Connection.Person{}, people)
+	buffer, err := factories.GetClient()
 
 	if err != nil {
 		panic(err)
 	}
 
-	_, err = conn.Write(buffer.Bytes())
+	_, err = conn.Write(buffer)
 	if err != nil {
 		panic(err)
 	}

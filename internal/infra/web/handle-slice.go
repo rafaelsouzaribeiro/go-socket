@@ -6,10 +6,10 @@ import (
 	"net"
 )
 
-func (h *Iconnection) HandleConnection(conn *net.TCPConn) {
+func (h *Iconnection) HandleSliceConnection(conn *net.TCPConn) {
 	defer conn.Close()
 
-	var person Person
+	var person []Person
 	decoder := gob.NewDecoder(conn)
 	err := decoder.Decode(&person)
 	if err != nil {
@@ -17,6 +17,8 @@ func (h *Iconnection) HandleConnection(conn *net.TCPConn) {
 		return
 	}
 
-	fmt.Printf("Message received. Name:%s,Age:%d \n", person.Name, person.Age)
+	for _, p := range person {
+		fmt.Printf("Message received. Name: %s, Age: %d\n", p.Name, p.Age)
+	}
 
 }
