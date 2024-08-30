@@ -99,7 +99,7 @@ for {
 
   ```
 <br />
-To send a data struct<br />
+To send a struct data<br />
 
 client:<br />
 ```go
