@@ -3,14 +3,17 @@ package factory
 import Connection "github.com/rafaelsouzaribeiro/go-socket/internal/infra/web"
 
 type FactoryServer struct {
-	typeStruct bool
-	typeSlice  bool
-	Channel    chan Connection.Person
+	types   string
+	Channel chan Connection.Person
 }
 
-func NewServer(typeStruct bool, typeSlice bool) *FactoryServer {
+const (
+	Slice  = "slice"
+	Struct = "struct"
+)
+
+func NewServer(types string) *FactoryServer {
 	return &FactoryServer{
-		typeStruct: typeStruct,
-		typeSlice:  typeSlice,
+		types: types,
 	}
 }

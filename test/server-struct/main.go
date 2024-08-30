@@ -19,7 +19,7 @@ func RunServer() {
 	defer listener.Close()
 
 	fmt.Printf("Server started at %s:%s \n", connect.Host, connect.Port)
-	factories := factory.NewServer(true, false)
+	factories := factory.NewServer(factory.Struct)
 	channel := make(chan Connection.Person)
 	factories.Channel = channel
 

@@ -7,11 +7,11 @@ import (
 )
 
 func (f *FactoryServer) GetServer(connect *Connection.Iconnection, conn *net.TCPConn) {
-	if f.typeStruct {
+	if f.types == Slice {
 		connect.HandleStructConnection(conn, f.Channel)
 	}
 
-	if f.typeSlice {
+	if f.types == Struct {
 		connect.HandleSliceConnection(conn, f.Channel)
 	}
 }
