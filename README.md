@@ -1,4 +1,4 @@
-To send a data string<br />
+To send data in string<br />
 
 client:<br />
 
@@ -46,7 +46,7 @@ for {
   ```
 
 <br />
-To send a data slice<br />
+To send data in slice<br />
 
 client:<br />
 
@@ -99,7 +99,7 @@ for {
 
   ```
 <br />
-To send a struct data<br />
+To send data in struct<br />
 
 client:<br />
 ```go
