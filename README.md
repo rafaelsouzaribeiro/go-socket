@@ -1,4 +1,4 @@
-To send a string<br />
+To send a string of data<br />
 
 client:<br />
 
@@ -46,7 +46,7 @@ for {
   ```
 
 <br />
-To send a slice<br />
+To send a slice of data<br />
 
 client:<br />
 
@@ -99,7 +99,7 @@ fmt.Printf("Server started at %s:%s \n", connect.Host, connect.Port)
 
   ```
 <br />
-To send a struct<br />
+To send a struct of data<br />
 
 client:<br />
 
