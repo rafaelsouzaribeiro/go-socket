@@ -6,7 +6,7 @@ import (
 	"net"
 )
 
-func (h *Iconnection) HandleStructConnection(conn *net.TCPConn) {
+func (h *Iconnection) HandleStructConnection(conn *net.TCPConn, channel chan Person) {
 	defer conn.Close()
 
 	var person Person
@@ -17,6 +17,6 @@ func (h *Iconnection) HandleStructConnection(conn *net.TCPConn) {
 		return
 	}
 
-	fmt.Printf("Message received. Name:%s,Age:%d \n", person.Name, person.Age)
+	channel <- person
 
 }

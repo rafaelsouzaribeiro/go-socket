@@ -20,6 +20,14 @@ func RunServer() {
 
 	fmt.Printf("Server started at %s:%s \n", connect.Host, connect.Port)
 	factories := factory.NewServer(false, true)
+	channel := make(chan Connection.Person)
+	factories.Channel = channel
+
+	go func() {
+		for p := range channel {
+			fmt.Printf("Message received. Name: %s, Age: %d\n", p.Name, p.Age)
+		}
+	}()
 
 	for {
 		conn, err := listener.AcceptTCP()

@@ -8,10 +8,10 @@ import (
 
 func (f *FactoryServer) GetServer(connect *Connection.Iconnection, conn *net.TCPConn) {
 	if f.typeStruct {
-		connect.HandleStructConnection(conn)
+		connect.HandleStructConnection(conn, f.Channel)
 	}
 
 	if f.typeSlice {
-		connect.HandleSliceConnection(conn)
+		connect.HandleSliceConnection(conn, f.Channel)
 	}
 }

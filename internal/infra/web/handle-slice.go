@@ -6,7 +6,7 @@ import (
 	"net"
 )
 
-func (h *Iconnection) HandleSliceConnection(conn *net.TCPConn) {
+func (h *Iconnection) HandleSliceConnection(conn *net.TCPConn, channel chan Person) {
 	defer conn.Close()
 
 	var person []Person
@@ -18,7 +18,8 @@ func (h *Iconnection) HandleSliceConnection(conn *net.TCPConn) {
 	}
 
 	for _, p := range person {
-		fmt.Printf("Message received. Name: %s, Age: %d\n", p.Name, p.Age)
+		channel <- p
+
 	}
 
 }
