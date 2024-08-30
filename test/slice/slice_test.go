@@ -29,7 +29,7 @@ func BenchmarkClient(b *testing.B) {
 		defer conn.Close()
 
 		people := []Connection.Person{
-			{},
+			{Name: "Paulo", Age: 17},
 			{Name: "Maria", Age: 30},
 			{Name: "João", Age: 25},
 		}
