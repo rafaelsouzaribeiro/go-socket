@@ -2,7 +2,7 @@ To send a string of data<br />
 
 client:<br />
 
- ```
+```go
 factories := factory.NewClient(Connection.Person{}, nil, "Message")
 buffer, err := factories.GetClient()
 
@@ -20,7 +20,7 @@ if err != nil {
  <br />
  Server:
 
- ```
+```go
 fmt.Printf("Server started at %s:%s \n", connect.Host, connect.Port)
 factories := factory.NewServer(factory.String)
 
@@ -50,7 +50,7 @@ To send a slice of data<br />
 
 client:<br />
 
- ```
+ ```go
 
 	people := []Connection.Person{
 		{Name: "Rafael", Age: 38},
@@ -74,7 +74,7 @@ client:<br />
  <br />
  Server:
 
- ```
+ ```go
 fmt.Printf("Server started at %s:%s \n", connect.Host, connect.Port)
 	factories := factory.NewServer(factory.Slice)
 
@@ -102,8 +102,7 @@ fmt.Printf("Server started at %s:%s \n", connect.Host, connect.Port)
 To send a struct of data<br />
 
 client:<br />
-
- ```
+```go
 
 	factories := factory.NewClient(Connection.Person{Name: "Rafael", Age: 38}, nil, "")
 	buffer, err := factories.GetClient()
@@ -122,7 +121,7 @@ client:<br />
  <br />
  Server:
 
- ```
+```go
 fmt.Printf("Server started at %s:%s \n", connect.Host, connect.Port)
 	factories := factory.NewServer(factory.Struct)
 
