@@ -13,5 +13,9 @@ func (f *FactoryClient) GetClient() ([]byte, error) {
 		return f.getDataSliceClient()
 	}
 
+	if f.typeString != "" {
+		return f.getDataStringClient()
+	}
+
 	return nil, fmt.Errorf("invalid function")
 }

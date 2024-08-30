@@ -22,7 +22,7 @@ func main() {
 	factories := factory.NewServer(factory.Struct)
 
 	channel := make(chan Connection.Person)
-	factories.Channel = channel
+	factories.ChannelPerson = channel
 
 	go func() {
 		for p := range channel {

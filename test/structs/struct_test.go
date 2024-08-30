@@ -28,7 +28,7 @@ func BenchmarkClient(b *testing.B) {
 
 		defer conn.Close()
 
-		factories := factory.NewClient(Connection.Person{Name: "Rafael", Age: 38}, nil)
+		factories := factory.NewClient(Connection.Person{Name: "Rafael", Age: 38}, nil, "")
 		buffer, err := factories.GetClient()
 
 		if err != nil {

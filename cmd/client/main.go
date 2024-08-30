@@ -14,12 +14,8 @@ func main() {
 	}
 
 	defer conn.Close()
-	people := []Connection.Person{
-		{Name: "Rafael", Age: 38},
-		{Name: "Maria", Age: 30},
-		{Name: "João", Age: 25},
-	}
-	factories := factory.NewClient(Connection.Person{}, people)
+
+	factories := factory.NewClient(Connection.Person{Name: "Rafael", Age: 38}, nil, "")
 	buffer, err := factories.GetClient()
 
 	if err != nil {
