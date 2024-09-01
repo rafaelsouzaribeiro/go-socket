@@ -82,7 +82,7 @@ fmt.Printf("Server started at %s:%s \n", connect.Host, connect.Port)
 factories := factory.NewServer(factory.Slice)
 
 channel := make(chan global.Custom)
-factories.ChannelPerson = channel
+factories.ChannelCustom = channel
 
 go func() {
 	for p := range channel {
@@ -129,7 +129,7 @@ fmt.Printf("Server started at %s:%s \n", connect.Host, connect.Port)
 factories := factory.NewServer(factory.Struct)
 
 channel := make(chan global.Custom)
-factories.ChannelPerson = channel
+factories.ChannelCustom = channel
 
 go func() {
 	for p := range channel {
