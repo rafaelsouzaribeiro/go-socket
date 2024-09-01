@@ -1,18 +1,20 @@
 package factory
 
-import Connection "github.com/rafaelsouzaribeiro/go-socket/internal/infra/web"
+import (
+	"github.com/rafaelsouzaribeiro/go-socket/pkg/global"
+)
 
 type FactoryClient struct {
-	typeStruct Connection.Person
-	typeSlice  []Connection.Person
+	typeStruct global.Custom
+	typeSlice  []global.Custom
 	typeString string
 }
 
-func isPersonEmpty(p Connection.Person) bool {
-	return p == Connection.Person{}
+func isPersonEmpty(p global.Custom) bool {
+	return p == global.Custom{}
 }
 
-func NewClient(typeStruct Connection.Person, typeSlice []Connection.Person, typeString string) *FactoryClient {
+func NewClient(typeStruct global.Custom, typeSlice []global.Custom, typeString string) *FactoryClient {
 	return &FactoryClient{
 		typeStruct: typeStruct,
 		typeSlice:  typeSlice,

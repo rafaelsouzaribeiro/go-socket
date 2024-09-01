@@ -1,10 +1,10 @@
 package factory
 
-import Connection "github.com/rafaelsouzaribeiro/go-socket/internal/infra/web"
+import "github.com/rafaelsouzaribeiro/go-socket/pkg/global"
 
 type FactoryServer struct {
 	types         string
-	ChannelPerson chan Connection.Person
+	ChannelPerson chan global.Custom
 	ChannelString chan string
 }
 

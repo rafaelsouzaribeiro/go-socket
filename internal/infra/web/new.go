@@ -5,11 +5,6 @@ type Iconnection struct {
 	Port string
 }
 
-type Person struct {
-	Name string
-	Age  int
-}
-
 func New(host, port string) *Iconnection {
 	return &Iconnection{
 		Host: host,

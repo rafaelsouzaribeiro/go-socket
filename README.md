@@ -1,9 +1,12 @@
+To customize the struct, go to ```pkg/global/index.go``` and modify the Custom struct.
+<br/>
+
 To send data in string<br />
 
 client:<br />
 
 ```go
-factories := factory.NewClient(Connection.Person{}, nil, "Message")
+factories := factory.NewClient(global.Custom{}, nil, "Message")
 buffer, err := factories.GetClient()
 
 if err != nil {
@@ -52,12 +55,12 @@ client:<br />
 
  ```go
 
-	people := []Connection.Person{
+	people := []global.Custom{
 		{Name: "Rafael", Age: 38},
 		{Name: "Maria", Age: 30},
 		{Name: "João", Age: 25},
 	}
-	factories := factory.NewClient(Connection.Person{}, people, "")
+	factories := factory.NewClient(global.Custom{}, people, "")
 	buffer, err := factories.GetClient()
 
 	if err != nil {
@@ -78,7 +81,7 @@ client:<br />
 fmt.Printf("Server started at %s:%s \n", connect.Host, connect.Port)
 factories := factory.NewServer(factory.Slice)
 
-channel := make(chan Connection.Person)
+channel := make(chan global.Custom)
 factories.ChannelPerson = channel
 
 go func() {
@@ -104,7 +107,7 @@ To send data in struct<br />
 client:<br />
 ```go
 
-	factories := factory.NewClient(Connection.Person{Name: "Rafael", Age: 38}, nil, "")
+	factories := factory.NewClient(global.Custom{Name: "Rafael", Age: 38}, nil, "")
 	buffer, err := factories.GetClient()
 
 	if err != nil {
@@ -125,7 +128,7 @@ client:<br />
 fmt.Printf("Server started at %s:%s \n", connect.Host, connect.Port)
 factories := factory.NewServer(factory.Struct)
 
-channel := make(chan Connection.Person)
+channel := make(chan global.Custom)
 factories.ChannelPerson = channel
 
 go func() {

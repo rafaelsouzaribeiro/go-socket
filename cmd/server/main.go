@@ -6,6 +6,7 @@ import (
 
 	Connection "github.com/rafaelsouzaribeiro/go-socket/internal/infra/web"
 	"github.com/rafaelsouzaribeiro/go-socket/pkg/factory"
+	"github.com/rafaelsouzaribeiro/go-socket/pkg/global"
 )
 
 func main() {
@@ -21,7 +22,7 @@ func main() {
 	fmt.Printf("Server started at %s:%s \n", connect.Host, connect.Port)
 	factories := factory.NewServer(factory.Slice)
 
-	channel := make(chan Connection.Person)
+	channel := make(chan global.Custom)
 	factories.ChannelPerson = channel
 
 	go func() {
