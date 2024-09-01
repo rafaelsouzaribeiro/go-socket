@@ -4,7 +4,7 @@ import "github.com/rafaelsouzaribeiro/go-socket/pkg/global"
 
 type FactoryServer struct {
 	types         string
-	ChannelPerson chan global.Custom
+	ChannelCustom chan global.Custom
 	ChannelString chan string
 }
 

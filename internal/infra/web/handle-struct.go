@@ -11,14 +11,14 @@ import (
 func (h *Iconnection) HandleStructConnection(conn *net.TCPConn, channel chan global.Custom) {
 	defer conn.Close()
 
-	var person global.Custom
+	var cutom global.Custom
 	decoder := gob.NewDecoder(conn)
-	err := decoder.Decode(&person)
+	err := decoder.Decode(&cutom)
 	if err != nil {
 		fmt.Println("Error decoding message:", err)
 		return
 	}
 
-	channel <- person
+	channel <- cutom
 
 }
