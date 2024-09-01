@@ -1,4 +1,5 @@
 To customize the struct, go to ```pkg/global/index.go``` and modify the Custom struct.
+You also need to fix the println statements in the channel.
 <br/>
 
 To send data in string<br />
