@@ -7,6 +7,7 @@ type FactoryServer struct {
 	ChannelCustom chan global.Custom
 	ChannelString chan string
 	ChannelInt    chan int32
+	OutputFolder  string
 }
 
 const (
@@ -14,6 +15,7 @@ const (
 	Struct = "struct"
 	String = "string"
 	Int32  = "Int32"
+	Folder = "Folder"
 )
 
 func NewServer(types string) *FactoryServer {

@@ -22,5 +22,9 @@ func (f *FactoryClient) GetClient() ([]byte, error) {
 
 	}
 
+	if f.TypeFolder != "" {
+		return f.getDataFolderClient()
+	}
+
 	return nil, fmt.Errorf("invalid function")
 }

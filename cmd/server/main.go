@@ -6,7 +6,6 @@ import (
 
 	Connection "github.com/rafaelsouzaribeiro/go-socket/internal/infra/web"
 	"github.com/rafaelsouzaribeiro/go-socket/pkg/factory"
-	"github.com/rafaelsouzaribeiro/go-socket/pkg/global"
 )
 
 func main() {
@@ -20,14 +19,14 @@ func main() {
 	defer listener.Close()
 
 	fmt.Printf("Server started at %s:%s \n", connect.Host, connect.Port)
-	factories := factory.NewServer(factory.Slice)
-
-	channel := make(chan global.Custom)
-	factories.ChannelCustom = channel
+	factories := factory.NewServer(factory.Folder)
+	factories.OutputFolder = "../../cmd"
+	channel := make(chan string)
+	factories.ChannelString = channel
 
 	go func() {
 		for p := range channel {
-			fmt.Printf("Message received. Name: %s, Age: %d\n", p.Name, p.Age)
+			fmt.Printf("Message received: %s", p)
 		}
 	}()
 

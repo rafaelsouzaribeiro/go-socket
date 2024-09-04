@@ -203,3 +203,51 @@ for {
 }
 
   ```
+
+    <br />
+How to send a folder?<br />
+
+client:<br />
+```go
+factories := factory.NewClient(factory.FactoryClient{
+	TypeFolder: "../../internal",
+})
+buffer, err := factories.GetClient()
+
+if err != nil {
+	panic(err)
+}
+
+_, err = conn.Write(buffer)
+if err != nil {
+	panic(err)
+}
+
+ ```
+
+ <br />
+ Server:
+
+```go
+fmt.Printf("Server started at %s:%s \n", connect.Host, connect.Port)
+factories := factory.NewServer(factory.Folder)
+factories.OutputFolder = "../../cmd"
+channel := make(chan string)
+factories.ChannelString = channel
+
+go func() {
+	for p := range channel {
+		fmt.Printf("Message received: %s", p)
+	}
+}()
+
+for {
+	conn, err := listener.AcceptTCP()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	go factories.GetServer(connect, conn)
+}
+
+  ```
