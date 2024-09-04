@@ -58,24 +58,24 @@ client:<br />
 
  ```go
 
-	people := []global.Custom{
-		{Name: "Rafael", Age: 38},
-		{Name: "Maria", Age: 30},
-		{Name: "João", Age: 25},
-	}
-	factories := factory.NewClient(factory.FactoryClient{
-			TypeSlice: people,
-		})
-	buffer, err := factories.GetClient()
+people := []global.Custom{
+	{Name: "Rafael", Age: 38},
+	{Name: "Maria", Age: 30},
+	{Name: "João", Age: 25},
+}
+factories := factory.NewClient(factory.FactoryClient{
+		TypeSlice: people,
+	})
+buffer, err := factories.GetClient()
 
-	if err != nil {
-		panic(err)
-	}
+if err != nil {
+	panic(err)
+}
 
-	_, err = conn.Write(buffer)
-	if err != nil {
-		panic(err)
-	}
+_, err = conn.Write(buffer)
+if err != nil {
+	panic(err)
+}
 
  ```
 
@@ -112,19 +112,19 @@ To send data in struct<br />
 client:<br />
 ```go
 
-	factories := factory.NewClient(factory.FactoryClient{
-			TypeStruct: global.Custom{Name: "Rafael", Age: 38},
-		})
-	buffer, err := factories.GetClient()
+factories := factory.NewClient(factory.FactoryClient{
+		TypeStruct: global.Custom{Name: "Rafael", Age: 38},
+	})
+buffer, err := factories.GetClient()
 
-	if err != nil {
-		panic(err)
-	}
+if err != nil {
+	panic(err)
+}
 
-	_, err = conn.Write(buffer)
-	if err != nil {
-		panic(err)
-	}
+_, err = conn.Write(buffer)
+if err != nil {
+	panic(err)
+}
 
  ```
 
@@ -161,20 +161,20 @@ To send data in int32<br />
 
 client:<br />
 ```go
-	valueint := 5
-	factories := factory.NewClient(factory.FactoryClient{
-			TypeInt: &valueint,
-		})
-	buffer, err := factories.GetClient()
+valueint := 5
+factories := factory.NewClient(factory.FactoryClient{
+		TypeInt: &valueint,
+	})
+buffer, err := factories.GetClient()
 
-	if err != nil {
-		panic(err)
-	}
+if err != nil {
+	panic(err)
+}
 
-	_, err = conn.Write(buffer)
-	if err != nil {
-		panic(err)
-	}
+_, err = conn.Write(buffer)
+if err != nil {
+	panic(err)
+}
 
  ```
 
@@ -187,11 +187,11 @@ factories := factory.NewServer(factory.Int32)
 channel := make(chan int32)
 factories.ChannelInt = channel
 
-	go func() {
-		for p := range channel {
-			fmt.Printf("Message received: %d\n", p)
-		}
-	}()
+go func() {
+	for p := range channel {
+		fmt.Printf("Message received: %d\n", p)
+	}
+}()
 
 for {
 	conn, err := listener.AcceptTCP()
