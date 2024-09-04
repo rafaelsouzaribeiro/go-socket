@@ -3,6 +3,7 @@ package main
 import (
 	Connection "github.com/rafaelsouzaribeiro/go-socket/internal/infra/web"
 	"github.com/rafaelsouzaribeiro/go-socket/pkg/factory"
+	"github.com/rafaelsouzaribeiro/go-socket/pkg/global"
 )
 
 func main() {
@@ -15,10 +16,14 @@ func main() {
 
 	defer conn.Close()
 
-	intValue := 2
+	people := []global.Custom{
+		{Name: "Rafael", Age: 38},
+		{Name: "Maria", Age: 30},
+		{Name: "João", Age: 25},
+	}
 
 	factories := factory.NewClient(factory.FactoryClient{
-		TypeInt: &intValue,
+		TypeSlice: people,
 	})
 	buffer, err := factories.GetClient()
 
