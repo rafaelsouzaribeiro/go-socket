@@ -1,4 +1,4 @@
-package slice
+package string
 
 import (
 	"sync"
@@ -7,7 +7,6 @@ import (
 
 	Connection "github.com/rafaelsouzaribeiro/go-socket/internal/infra/web"
 	"github.com/rafaelsouzaribeiro/go-socket/pkg/factory"
-	"github.com/rafaelsouzaribeiro/go-socket/pkg/global"
 	serverstring "github.com/rafaelsouzaribeiro/go-socket/test/server-string"
 )
 
@@ -29,7 +28,9 @@ func BenchmarkClient(b *testing.B) {
 
 		defer conn.Close()
 
-		factories := factory.NewClient(global.Custom{}, nil, "Message")
+		factories := factory.NewClient(factory.FactoryClient{
+			TypeString: "Message",
+		})
 		buffer, err := factories.GetClient()
 
 		if err != nil {

@@ -1,4 +1,4 @@
-package main
+package serverint32
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	"github.com/rafaelsouzaribeiro/go-socket/pkg/factory"
 )
 
-func main() {
+func RunServer() {
 	connect := Connection.New("localhost", "8585")
 	listener, err := connect.ConnectionServer()
 
@@ -20,7 +20,6 @@ func main() {
 
 	fmt.Printf("Server started at %s:%s \n", connect.Host, connect.Port)
 	factories := factory.NewServer(factory.Int32)
-
 	channel := make(chan int32)
 	factories.ChannelInt = channel
 
@@ -37,6 +36,6 @@ func main() {
 		}
 
 		go factories.GetServer(connect, conn)
-	}
 
+	}
 }

@@ -1,4 +1,4 @@
-package slice
+package int32
 
 import (
 	"sync"
@@ -7,15 +7,14 @@ import (
 
 	Connection "github.com/rafaelsouzaribeiro/go-socket/internal/infra/web"
 	"github.com/rafaelsouzaribeiro/go-socket/pkg/factory"
-	"github.com/rafaelsouzaribeiro/go-socket/pkg/global"
-	serverslice "github.com/rafaelsouzaribeiro/go-socket/test/server-slice"
+	serverint32 "github.com/rafaelsouzaribeiro/go-socket/test/server-int32"
 )
 
 var Once sync.Once
 
 func BenchmarkClient(b *testing.B) {
 	Once.Do(func() {
-		go serverslice.RunServer()
+		go serverint32.RunServer()
 		time.Sleep(1 * time.Second)
 	})
 
@@ -28,14 +27,10 @@ func BenchmarkClient(b *testing.B) {
 		}
 
 		defer conn.Close()
+		valueint := 5
 
-		people := []global.Custom{
-			{Name: "Paulo", Age: 17},
-			{Name: "Maria", Age: 30},
-			{Name: "João", Age: 25},
-		}
 		factories := factory.NewClient(factory.FactoryClient{
-			TypeSlice: people,
+			TypeInt: &valueint,
 		})
 		buffer, err := factories.GetClient()
 

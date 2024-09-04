@@ -18,4 +18,8 @@ func (f *FactoryServer) GetServer(connect *Connection.Iconnection, conn *net.TCP
 	if f.types == String {
 		connect.HandleStringConnection(conn, f.ChannelString)
 	}
+
+	if f.types == Int32 {
+		connect.HandleIntConnection(conn, f.ChannelInt)
+	}
 }

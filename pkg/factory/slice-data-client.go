@@ -9,7 +9,7 @@ func (f *FactoryClient) getDataSliceClient() ([]byte, error) {
 
 	var buffer bytes.Buffer
 	encoder := gob.NewEncoder(&buffer)
-	err := encoder.Encode(f.typeSlice)
+	err := encoder.Encode(f.TypeSlice)
 
 	if err != nil {
 		return nil, err

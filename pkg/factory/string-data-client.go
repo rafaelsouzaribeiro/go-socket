@@ -2,5 +2,5 @@ package factory
 
 func (f *FactoryClient) getDataStringClient() ([]byte, error) {
 
-	return []byte(f.typeString), nil
+	return []byte(f.TypeString), nil
 }

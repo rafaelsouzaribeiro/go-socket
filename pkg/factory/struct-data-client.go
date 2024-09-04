@@ -9,7 +9,7 @@ func (f *FactoryClient) getDataStructClient() ([]byte, error) {
 
 	var buffer bytes.Buffer
 	encoder := gob.NewEncoder(&buffer)
-	err := encoder.Encode(f.typeStruct)
+	err := encoder.Encode(f.TypeStruct)
 
 	if err != nil {
 		return nil, err

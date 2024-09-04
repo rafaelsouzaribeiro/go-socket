@@ -29,7 +29,10 @@ func BenchmarkClient(b *testing.B) {
 
 		defer conn.Close()
 
-		factories := factory.NewClient(global.Custom{Name: "Rafael", Age: 38}, nil, "")
+		factories := factory.NewClient(factory.FactoryClient{
+			TypeStruct: global.Custom{Name: "Rafael", Age: 38},
+		})
+
 		buffer, err := factories.GetClient()
 
 		if err != nil {

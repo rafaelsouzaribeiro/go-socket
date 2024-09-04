@@ -5,19 +5,16 @@ import (
 )
 
 type FactoryClient struct {
-	typeStruct global.Custom
-	typeSlice  []global.Custom
-	typeString string
+	TypeStruct global.Custom
+	TypeSlice  []global.Custom
+	TypeString string
+	TypeInt    *int
 }
 
 func isPersonEmpty(p global.Custom) bool {
 	return p == global.Custom{}
 }
 
-func NewClient(typeStruct global.Custom, typeSlice []global.Custom, typeString string) *FactoryClient {
-	return &FactoryClient{
-		typeStruct: typeStruct,
-		typeSlice:  typeSlice,
-		typeString: typeString,
-	}
+func NewClient(factory FactoryClient) *FactoryClient {
+	return &factory
 }

@@ -5,16 +5,21 @@ import (
 )
 
 func (f *FactoryClient) GetClient() ([]byte, error) {
-	if !isPersonEmpty(f.typeStruct) {
+	if !isPersonEmpty(f.TypeStruct) {
 		return f.getDataStructClient()
 	}
 
-	if f.typeSlice != nil {
+	if f.TypeSlice != nil {
 		return f.getDataSliceClient()
 	}
 
-	if f.typeString != "" {
+	if f.TypeString != "" {
 		return f.getDataStringClient()
+	}
+
+	if f.TypeInt != nil {
+		return f.getDataIntegerClient()
+
 	}
 
 	return nil, fmt.Errorf("invalid function")
