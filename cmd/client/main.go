@@ -16,7 +16,7 @@ func main() {
 	defer conn.Close()
 
 	factories := factory.NewClient(factory.FactoryClient{
-		TypeFolder: "../../internal",
+		Folder: "../../internal",
 	})
 	buffer, err := factories.GetClient()
 

@@ -9,7 +9,7 @@ type FactoryClient struct {
 	TypeSlice  []global.Custom
 	TypeString string
 	TypeInt    *int
-	TypeFolder string
+	Folder     string
 }
 
 func isPersonEmpty(p global.Custom) bool {

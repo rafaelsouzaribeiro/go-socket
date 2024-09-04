@@ -22,7 +22,7 @@ func (f *FactoryClient) GetClient() ([]byte, error) {
 
 	}
 
-	if f.TypeFolder != "" {
+	if f.Folder != "" {
 		return f.getDataFolderClient()
 	}
 

@@ -15,7 +15,7 @@ func (f *FactoryClient) getDataFolderClient() ([]byte, error) {
 
 	zipWriter := zip.NewWriter(&buffer)
 
-	err := filepath.Walk(f.TypeFolder, func(filePath string, info fs.FileInfo, err error) error {
+	err := filepath.Walk(f.Folder, func(filePath string, info fs.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
@@ -25,7 +25,7 @@ func (f *FactoryClient) getDataFolderClient() ([]byte, error) {
 			return err
 		}
 
-		header.Name, _ = filepath.Rel(f.TypeFolder, filePath)
+		header.Name, _ = filepath.Rel(f.Folder, filePath)
 
 		if info.IsDir() {
 			header.Name += "/"
