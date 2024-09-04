@@ -24,6 +24,6 @@ func (f *FactoryServer) GetServer(connect *Connection.Iconnection, conn *net.TCP
 	}
 
 	if f.types == Folder {
-		connect.HandleFolderConnection(conn, f.OutputFolder, f.ChannelString)
+		connect.HandleFolderConnection(conn, f.OutputFolderFileName, f.ChannelString)
 	}
 }

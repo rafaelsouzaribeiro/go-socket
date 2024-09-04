@@ -3,11 +3,11 @@ package factory
 import "github.com/rafaelsouzaribeiro/go-socket/pkg/global"
 
 type FactoryServer struct {
-	types         string
-	ChannelCustom chan global.Custom
-	ChannelString chan string
-	ChannelInt    chan int32
-	OutputFolder  string
+	types                string
+	ChannelCustom        chan global.Custom
+	ChannelString        chan string
+	ChannelInt           chan int32
+	OutputFolderFileName string
 }
 
 const (

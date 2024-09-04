@@ -10,19 +10,19 @@ import (
 func (h *Iconnection) HandleFolderConnection(conn *net.TCPConn, OutputFolder string, channel chan string) {
 	defer conn.Close()
 
-	outFile, err := os.Create(fmt.Sprintf("%s/received.zip", OutputFolder))
+	outFile, err := os.Create(fmt.Sprintf("%s", OutputFolder))
 	if err != nil {
-		channel <- fmt.Sprintf("Error creating file: %v", err)
+		channel <- fmt.Sprintf("Error creating file: %v \n", err)
 		return
 	}
 	defer outFile.Close()
 
 	_, err = io.Copy(outFile, conn)
 	if err != nil {
-		channel <- fmt.Sprintf("Error saving file: %v", err)
+		channel <- fmt.Sprintf("Error saving file: %v \n", err)
 		return
 	}
 
-	channel <- "File received and saved successfully!"
+	channel <- "File received and saved successfully! \n"
 
 }

@@ -20,7 +20,7 @@ func main() {
 
 	fmt.Printf("Server started at %s:%s \n", connect.Host, connect.Port)
 	factories := factory.NewServer(factory.Folder)
-	factories.OutputFolder = "../../cmd"
+	factories.OutputFolderFileName = "../../cmd/received.zip"
 	channel := make(chan string)
 	factories.ChannelString = channel
 
