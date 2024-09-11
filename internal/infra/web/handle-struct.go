@@ -8,7 +8,7 @@ import (
 	"github.com/rafaelsouzaribeiro/go-socket/pkg/global"
 )
 
-func (h *Iconnection) HandleStructConnection(conn *net.TCPConn, channel chan global.Custom) {
+func (h *Iconnection) HandleStructConnection(conn *net.TCPConn, channel chan<- global.Custom) {
 	defer conn.Close()
 
 	var cutom global.Custom

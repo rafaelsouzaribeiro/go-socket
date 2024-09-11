@@ -5,7 +5,7 @@ import (
 	"net"
 )
 
-func (h *Iconnection) HandleIntConnection(conn *net.TCPConn, channel chan int32) {
+func (h *Iconnection) HandleIntConnection(conn *net.TCPConn, channel chan<- int32) {
 	defer conn.Close()
 
 	var num int32

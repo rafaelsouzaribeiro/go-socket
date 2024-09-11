@@ -5,7 +5,7 @@ import (
 	"net"
 )
 
-func (h *Iconnection) HandleStringConnection(conn *net.TCPConn, channel chan string) {
+func (h *Iconnection) HandleStringConnection(conn *net.TCPConn, channel chan<- string) {
 	defer conn.Close()
 
 	buffer := make([]byte, 1024)

@@ -7,10 +7,10 @@ import (
 	"os"
 )
 
-func (h *Iconnection) HandleFolderConnection(conn *net.TCPConn, OutputFolder string, channel chan string) {
+func (h *Iconnection) HandleFolderConnection(conn *net.TCPConn, OutputFolder string, channel chan<- string) {
 	defer conn.Close()
 
-	outFile, err := os.Create(fmt.Sprintf("%s", OutputFolder))
+	outFile, err := os.Create(OutputFolder)
 	if err != nil {
 		channel <- fmt.Sprintf("Error creating file: %v \n", err)
 		return
